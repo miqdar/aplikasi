@@ -1,0 +1,43 @@
+{
+  "daftar": [
+    {
+      "status": "[X]",
+      "task_content": "saya mau pergi ke pasar",
+      "date": "2020-08-26T13:29:11.019Z",
+      "tag": [
+        "pasar",
+        "pergi"
+      ]
+    },
+    {
+      "status": "[X]",
+      "task_content": "saya mau makan",
+      "date": "2020-08-26T22:10:29.567Z",
+      "tag": [
+        "makan"
+      ]
+    },
+    {
+      "status": "[]",
+      "task_content": "saya mau badminton",
+      "date": "2020-08-25T23:56:20.692Z",
+      "tag": [
+        "badminton"
+      ]
+    },
+    {
+      "status": "[]",
+      "task_content": "aku mau belajar",
+      "date": "2020-08-26T13:41:47.928Z",
+      "tag": [
+        "belajar"
+      ]
+    },
+    {
+      "status": "[]",
+      "task_content": "saya mau baca",
+      "date": "2020-08-26T23:02:01.464Z",
+      "tag": []
+    }
+  ]
+}
