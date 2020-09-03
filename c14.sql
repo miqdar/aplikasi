@@ -1,21 +1,21 @@
-CREATE table dosen (id_dosen varchar(5) primary key not null, nama varchar(50) not null);
-insert into dosen (id_dosen, nama) values ('M01','Bayu');
-insert into dosen (id_dosen, nama) values ('M02','Rizqon');
-insert into dosen (id_dosen, nama) values ('M03','Nirwan');
+create table jurusan (id_jurusan varchar(2) primary key not null, nama varchar(50) not null);
+insert into jurusan (id_jurusan , nama) values ('TI', 'Teknik Informatika'),('SI', 'Sistem Informasi'), ('TK', 'Teknik Komputer');
 
-CREATE table jurusan (kode_jur varchar(5) primary key not null, nama varchar(50) not null);
-insert into jurusan (kode_jur,nama) values ('ti','Teknik Informatika'), ('si','Sistem Informasi'),('tk','Teknik Komputer');
+create table dosen (id_dosen varchar(5) primary key not null, nama varchar(50) not null);
+insert into dosen (id_dosen,nama) VALUES ('D01','Nirwan'), ('D02','Rizqon'),('D03','Bayu');
 
-CREATE table matakuliah (id_matkul varchar(5) primary key not null, nama varchar(50) not null, sks int not null);
-insert into matakuliah (id_matkul,nama,sks) values ('01','Kalkulus','4'),('02','RDBMS','3'),('03','B.Inggris','2');
+create table matakuliah (id_matkul varchar(5) primary key not null, nama varchar(50) not null, sks int not null);
+insert into matakuliah (id_matkul , nama, sks) VALUES ('KAL','Kalkulus','4'), ('ENG','B.Inggris','3'), ('RDB','Relasi Database','4');
 
-CREATE table mahasiswa (nim varchar(10) primary key not null, nama varchar(50) not null, alamat text not null, kode_jur varchar(5) not null, foreign key (kode_jur) REFERENCES jurusan (kode_jur ));
-insert into mahasiswa (nim,nama,alamat,kode_jur) values ('S001','Adam Miqdar','Jl. Kebon Gedang','ti');
-insert into mahasiswa (nim,nama,alamat,kode_jur) values ('S002','Aisyah','Jl. Gatsu','si');
-insert into mahasiswa (nim,nama,alamat,kode_jur) values ('S003','Haitsam','Jl. Kircon','tk');
+create table mahasiswa (nim varchar(10) primary key not NULL, nama varchar(50) not null, alamat varchar(100) not null, id_jurusan varchar(2) not null, FOREIGN KEY (id_jurusan) REFERENCES jurusan (id_jurusan ));
+insert into mahasiswa (nim,nama,alamat, id_jurusan ) VALUES ('M0001','Adam Miqdar','Jl. Kebon Gedang','TI'), ('M0002','Aisyah D','Jl. Tumaritis','SI'),('M0003','Haitsam Miqdar','Jl. Gatsoe','TK');
 
-CREATE table nilai (nim varchar(10) not null, id_matkul varchar(5) not null, nilai char(2) not null, FOREIGN KEY (nim) REFERENCES mahasiswa (nim ), FOREIGN KEY (id_matkul ) REFERENCES matakuliah (id_matkul ));
-insert into nilai (nim,id_matkul,nilai) values ('S001','02','A');
-insert into nilai (nim,id_matkul,nilai) values ('S002','01','A');
-insert into nilai (nim,id_matkul,nilai) values ('S002','02','B');
-insert into nilai (nim,id_matkul,nilai) values ('S003','03','C');
+create table krs (id_krs varchar(5) primary key not null, nim varchar(10) not null, id_matkul varchar(5) not null, id_dosen varchar(5), nilai char, 
+FOREIGN KEY (nim) REFERENCES mahasiswa (nim), FOREIGN KEY (id_matkul ) REFERENCES matakuliah (id_matkul ), FOREIGN KEY (id_dosen ) REFERENCES dosen (id_dosen ));
+insert into krs (id_krs ,nim,id_matkul,id_dosen,nilai) VALUES ('20001','M0001','KAL','D01','A');
+insert into krs (id_krs ,nim,id_matkul,id_dosen,nilai) VALUES ('20002','M0002','KAL','D01','B');
+insert into krs (id_krs ,nim,id_matkul,id_dosen,nilai) VALUES ('20003','M0003','KAL','D01','A');
+insert into krs (id_krs ,nim,id_matkul,id_dosen,nilai) VALUES ('20004','M0001','ENG','D02','B');
+insert into krs (id_krs ,nim,id_matkul,id_dosen,nilai) VALUES ('20005','M0002','ENG','D02','A');
+insert into krs (id_krs ,nim,id_matkul,id_dosen,nilai) VALUES ('20006','M0003','RDB','D03','C');
+insert into krs (id_krs ,nim,id_matkul,id_dosen,nilai) VALUES ('20009','M0002','DM','D02','D');
